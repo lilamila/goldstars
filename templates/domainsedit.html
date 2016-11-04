@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block content %}
+
+<section id="one" class="wrapper special">
+  <div class="inner">
+      <h3>Editing a Domain</h3>
+      <div class="features">
+      <div class="feature">
+      <form enctype="multipart/form-data" method="post" action="/domains/{{domain.domID}}/edit/">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+      
+      <label for="name">Rename</label>
+      <input name="name" type="text" placeholder="{{domain.name}}" autofocus required>
+      <div class="3u$ 12u$(small)">
+        <ul class="actions vertical small">
+        <li><input type="submit"class="button special small fit"value='Edit'>
+        </input></li>
+      </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+</div>
+{% endblock %}

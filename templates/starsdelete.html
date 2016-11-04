@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+{% block content %}
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        {{ title }}
+      </h3>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="media">
+          <div class="media-body media-middle">
+            <ul class="list-unstyled">
+              <li><strong class="media-heading">{{event.name}}</strong></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <div class="btn-group pull-right" role="group" aria-label="...">
+          <form class="form" id="delete-form" role="form" method="post" action="/domains/{{domain.domID}}/events/{{event.eventID}}/delete/">
+            <a href="{{url_for('domevents', domID=domain.domID)}}"
+               class="btn btn-default">Whoa, I don't want to delete!</a>
+            <input type="submit" class="btn btn-danger"
+                   value="Get rid of it!"></input>
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

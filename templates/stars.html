@@ -1,0 +1,74 @@
+{% extends "main.html" %}
+{% block content %}
+
+<section id="one" class="wrapper special">
+  <div class="inner">
+      <h2>Events in <a href="{{url_for('domevents', domID=domain.domID)}}">{{domain.name}}</a> </h2>
+      {% if logged_in %}
+      <div class="media">
+        <a href="{{url_for('newevent', domID=domain.domID)}}">
+          <i class="glyphicon glyphicon-plus"></i>
+          Add some stars!
+        </a>
+      </div>
+      {% endif %}
+      </br>
+
+
+<div class="panel panel-default">
+    {% for e in events %}
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object" width="64" src="{{e.thumbnail_url}}" alt="icon">
+          </div>
+          
+          <div class="media-body media-middle">
+            <a class="button special icon fa-star pull-right" href="{{url_for('domains')}}">{{e.stars}}
+            </a>
+
+            <ul class="list-unstyled">
+              <li><h2>{{e.name}}</h2></strong></li>
+<!--               {% if events.featured %}
+                <li class="text-warning">
+                  <i class="glyphicon glyphicon-star"></i>
+                  Stars
+                </li>
+              {% endif %} -->
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <strong>Description</strong>
+        <p>{{e.description}}</p>
+      </li>
+
+      {% if logged_in %}
+      <li class="list-group-item clearfix">
+        <ul class="list-inline pull-right">
+          <li>
+            <a href="{{url_for('editevent', domID=e.domID, eventID=e.eventID)}}">
+              <i class="glyphicon glyphicon-pencil"></i>
+              Edit
+            </a>
+          </li>
+          <li>
+            <a class="text-danger" href="{{url_for('deleteevent', domID=e.domID, eventID=e.eventID)}}">
+              <i class="glyphicon glyphicon-trash"></i>
+              Delete
+            </a>
+          </li>
+        </ul>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+
+      
+</div>
+</div>
+{% endblock %}

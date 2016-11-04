@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+{% block content %}
+  <section id="one" class="wrapper special">
+    <div class="inner">
+        <h2>Adding a Domain</h2>
+
+      <div class="features">
+      <div class="feature">
+        <form enctype="multipart/form-data" method="post" action="/domains/new/">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        
+        <label for="name">Domain Name</label>
+        <input name="name" type="text" placeholder="Life, Work, the 5th dimension?" autofocus required>
+        <div class="3u$ 12u$(small)">
+        <ul class="actions vertical small">
+        <li><input type="submit"class="button special small fit"value='Create'>
+        </input></li>
+        </div>
+        <div class="col-md-offset-6 col-md-3">
+      </div>
+      <div class="clearfix"></div>
+      </form>
+      </div>
+      </div>
+
+
+
+<!-- <div class="container">
+  <div class="row">
+  <h3>New Domain&nbsp;&nbsp;</h3>
+  <form class="form well" enctype="multipart/form-data" method="post" action="/domains/new/">
+    <div class="form-group col-md-8">
+      <label for="name">Domain Name</label>
+      <input class="form-control" name="name" type="text" placeholder="Life, Work, the 5th dimension?" autofocus required>
+    </div>
+    <div class="checkbox col-md-3">
+    </div>
+    <div class="col-md-offset-6 col-md-3">
+      <input type="submit" class="btn btn-success pull-right" value='Create'>
+      </input>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+</div> -->
+
+</section>
+{% endblock %}

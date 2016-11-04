@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+{% block content %}
+<section id="one" class="wrapper special">
+  <div class="inner">
+
+      <h3>Create an event in <a href="{{url_for('domevents', domID=domain.domID)}}">{{domain.name}}</a></h3>
+<!--       <hr class="major" /> -->
+
+      <div class="features">
+      <div class="feature">
+      <form class="grid-form" enctype="multipart/form-data" method="post" action="{{url_for('newevent', domID=domain.domID)}}">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+
+      <label for="name">Event</label>
+      <input name="name" type="text" placeholder="Name" autofocus required>
+
+
+      <label for="stars"># Stars</label>
+      <input name="stars" type="number" placeholder="1-5" required>
+
+      <label for="category">Category</label>
+      <input name="category" type="text" placeholder="TODO define categories" >
+
+
+      <label for="thumbnail_url">Thumbnail URL</label>
+      <input name="thumbnail_url" type="text" placeholder="http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg" >
+
+
+      <label for="description">Description</label>
+        <textarea name="description" rows="2" placeholder="Why do you deserve these stars?!"></textarea>
+
+      <div class="3u$ 12u$(small)">
+        <ul class="actions vertical small">
+
+        <li><input type="submit" class="button special small fit" value='Create'>
+        </input></li>
+      </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+</div>
+
+{% endblock %}

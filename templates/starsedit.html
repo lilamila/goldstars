@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block content %}
+<section id="one" class="wrapper special">
+  <div class="inner">
+    <header class="major">
+      <h2>Editing {{event.name}} in <a href="{{url_for('domevents', domID=domain.domID)}}">{{domain.name}}</a></h2>
+
+      <div class="features">
+      <div class="feature">
+      <form enctype="multipart/form-data" method="post" action="/domains/{{domain.domID}}/events/{{event.eventID}}/edit/">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+      
+      <label for="name">Event</label>
+      <input name="name" type="text" placeholder="{{event.name}}" autofocus required>
+
+      <label for="stars"># Stars</label>
+      <input name="stars" type="text" placeholder="{{event.stars}}" autofocus required>
+
+      <label for="category">Category</label>
+      <input name="category" type="text" placeholder="TODO define categories" autofocus required>
+
+
+      <label for="thumbnail-url">Thumbnail URL</label>
+      <input name="thumbnail-url" type="text" placeholder="{{event.thumbnail_URL}}" autofocus required>
+
+      <label for="description">Description</label>
+        <textarea name="description" rows="2" placeholder="{{event.description}}"></textarea>
+
+      <div class="3u$ 12u$(small)">
+        <ul class="actions vertical small">
+        <li><input type="submit" class="button special small fit" value='Edit'>
+        </input></li>
+      </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+</div>
+
+{% endblock %}

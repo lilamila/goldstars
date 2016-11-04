@@ -1,0 +1,77 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+<!-- TODO (scoreboard) -->
+
+<!--         <h2>Scoreboard</h2>
+        <p> {{starcounts}}</p>
+		{% for u in users %}
+        <div class="features">
+       <div class="media-left">
+            <img class="media-object" width="64" src="{{u.picture}}" alt="icon">
+          </div>
+           <ul class="list-unstyled">
+              <li><h2>{{u.name}}</h2></strong></li>
+           </ul>
+		<div class="media-body media-middle">
+			{% for s in starcounts %}
+            {% endfor %}
+		</div>
+		</div>
+			{% endfor %} -->
+
+
+<section id="one" class="wrapper special">
+  <div class="inner">
+
+        <h2>Domains</h2>
+        {% if logged_in %}
+		  <div class="media">
+		    <a href="{{url_for('newDom')}}">
+		      <i class="glyphicon glyphicon-plus"></i>
+		      New realm of life
+		    </a>
+		    <br>
+		  </div>
+  		{% endif %}	
+
+      <div class="features">
+		{% for d in domain %}
+        <div class="feature">
+		 <div class="media">
+          <i class="fa fa-diamond"></i>
+          <h3> <a href="{{url_for('domevents', domID=d.domID)}}">{{d.name}}</a></h3>
+         </div>
+          <div class="media">
+	    	<a href="{{url_for('domevents', domID=d.domID)}}">
+		      <i class="glyphicon glyphicon-star btn-lg"></i><p>See stars</p>
+		    </a>
+		  </div>
+			  {% if logged_in %}
+				<div class="media">
+		    	<a href="{{url_for('newevent', domID=d.domID)}}">
+		      	<i class="glyphicon glyphicon-plus"></i> Add stars as different user </a>
+		  	</div>
+			    <div class="media">
+			    <a href="{{url_for('editDom', domID=d.domID)}}">
+			      <i class="glyphicon glyphicon-edit"></i>
+			      Edit
+			    </a>
+			  </div>
+			  <div class="media">
+			    <a href="{{url_for('deleteDom', domID=d.domID)}}">
+			      <i class="glyphicon glyphicon-minus"></i>
+			      Delete
+			    </a>
+			  </div>
+			</br>
+			  {% endif %}
+			</div>
+			{% endfor %}
+    	</div>
+        
+
+  </section>
+
+{% endblock %}
