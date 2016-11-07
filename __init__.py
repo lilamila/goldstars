@@ -27,7 +27,7 @@ import requests
 
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
-APPLICATION_NAME = "healthitems-app"
+APPLICATION_NAME = "goldstars-app"
 
 app = Flask(__name__)
 csrf = SeaSurf(app)
